@@ -1,38 +1,39 @@
-# ML_Kepler
-
-### 
-Exoplanet Classification Model
+### Voice Gender Recognition Script
 
 #### Overview
-This script implements a machine learning model using Support Vector Classification (SVC) to classify candidate exoplanets from a provided dataset. The model uses GridSearchCV to find the optimal parameters for the SVC, aiming to achieve the highest accuracy in classifying potential exoplanets.
+This script is designed to perform gender recognition by analyzing voice and speech. Utilizing a dataset of 3,168 recorded voice samples from male and female speakers, the script employs deep learning techniques to classify a voice as either male or female based on its acoustic properties.
+
+#### Dataset
+The dataset includes various acoustic properties measured from each voice sample, such as mean frequency, standard deviation of frequency, median frequency, quantiles, interquantile range, skewness, kurtosis, spectral entropy, spectral flatness, mode frequency, frequency centroid, peak frequency, fundamental frequency measurements (mean, minimum, maximum), dominant frequency measurements (average, minimum, maximum, range), and modulation index. The target variable is the label indicating male or female.
 
 #### Requirements
 - Python 3.6+
-- scikit-learn
-- numpy (if dataset preprocessing is necessary)
+- Libraries: numpy, pandas, scikit-learn, keras (or tensorflow for keras backend)
 
 #### Setup
-1. Ensure you have Python installed on your system.
-2. Install the required Python packages using pip:
+1. Ensure Python 3.6+ is installed on your machine.
+2. Install the required libraries using pip:
    ```sh
-   pip install scikit-learn numpy
+   pip install numpy pandas scikit-learn keras
    ```
+   Or, if you prefer TensorFlow's implementation of Keras:
+   ```sh
+   pip install numpy pandas scikit-learn tensorflow
+   ```
+
+#### Steps to Run the Script
+1. **Data Pre-Processing**: Prepare the dataset for training by pre-processing the acoustic properties.
+2. **Create a Deep Learning Model**: Define and compile the deep learning model for voice gender recognition.
+3. **Quantify the Trained Model**: Evaluate the model's performance on a test set to understand its accuracy.
+4. **Make Predictions**: Use the trained model to predict the gender of unseen voice samples.
 
 #### How to Run
-1. Prepare your dataset with features (X) and targets (yy) representing candidate exoplanets.
-2. Place the script in the same directory as your dataset.
-3. Run the script using Python:
-   ```sh
-   python exoplanet_classification.py
-   ```
-   
-#### Script Details
-- The script starts by splitting the dataset into training and testing sets.
-- It then defines a parameter grid for the SVC model with various values for 'C', 'gamma', and 'kernel'.
-- GridSearchCV is applied to find the optimal parameters for the SVC model.
-- The model is trained using the optimal parameters found.
-- Finally, the script fits the model to the training data and can be used to predict new candidate exoplanets.
+- Place the script in the directory with the dataset file.
+- Run the script from a terminal or an IDE that supports Python:
+  ```sh
+  python voice_gender_recognition.py
+  ```
+- Ensure the dataset file path is correctly specified in the script.
 
 #### Note
-- Ensure your dataset is preprocessed (if necessary) before running this script.
-- Adjust the `param_grid` as needed to explore different parameters for the SVC model.
+This script is a comprehensive solution for voice gender recognition using deep learning. The dataset's diverse acoustic properties enable the model to learn nuanced differences between male and female voices. Adjust the deep learning model parameters as needed to optimize performance for your specific dataset.
