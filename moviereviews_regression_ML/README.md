@@ -1,26 +1,91 @@
-### Childhood Respiratory Disease Analysis
 
-* In this analysis, I compared several linear models to predict the impact of smoking on childhood respiratory diseases. The analysis required preprocessing techniques to convert categorical data into numerical values and to apply scaling and normalization to the data.
+# IMDB Sentiment Analysis with TensorFlow
 
-## Steps
+This project demonstrates the implementation of a simple neural network using TensorFlow and Keras to perform sentiment analysis on the IMDB dataset. The IMDB dataset contains movie reviews along with their corresponding sentiment labels (positive or negative). The goal of the project is to build a model that can predict the sentiment of a movie review.
 
-* I used pandas's `get_dummies` function to convert the categorical data into binary values.
+## Table of Contents
 
-* I fitted a standard scaler model to the training data.
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Dataset](#dataset)
+- [Model Architecture](#model-architecture)
+- [Training](#training)
+- [Evaluation](#evaluation)
+- [Results](#results)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-* I applied the scaler transformation to both the training and testing data.
+## Introduction
 
-* I compared the performance of the following models: `LinearRegression`, `Lasso`, `Ridge`, and `ElasticNet`.
-  
-  * For each model, I computed the Mean Squared Error (MSE) and R2 score for the test data.
+Sentiment analysis is a common Natural Language Processing (NLP) task where the goal is to determine the sentiment expressed in a text. This project uses the IMDB dataset, which contains 50,000 movie reviews, to train a binary classification model to predict whether a review is positive or negative.
 
-### Additional Task
+## Installation
 
-* I plotted the residuals for both the training and testing data.
+To run this project, you need to have Python installed along with the following dependencies:
 
-### Guidance
+```bash
+pip install tensorflow numpy matplotlib
+```
 
-* I referred to Scikit-learn's [documentation](http://scikit-learn.org/stable/modules/linear_model.html) for instructions on how to use `Lasso`, `Ridge`, and `ElasticNet`. Each of these models followed the familiar pattern of `model->fit->predict`.
-- - -
+You can also clone this repository and install the dependencies using:
 
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+```bash
+git clone https://github.com/yourusername/imdb-sentiment-analysis.git
+cd imdb-sentiment-analysis
+pip install -r requirements.txt
+```
+
+## Dataset
+
+The IMDB dataset is included with TensorFlow and can be easily loaded using:
+
+```python
+from tensorflow.keras.datasets import imdb
+```
+
+The dataset is preprocessed such that the words are encoded as integers, where each integer corresponds to a specific word in the dataset.
+
+## Model Architecture
+
+The model used in this project is a simple neural network with the following architecture:
+
+- Input layer: The input data is a vector of integers representing the words in a review.
+- Dense layer: 16 units with ReLU activation.
+- Dense layer: 16 units with ReLU activation.
+- Output layer: 1 unit with sigmoid activation to produce the probability of the review being positive.
+
+The model is compiled using the `rmsprop` optimizer, `binary_crossentropy` loss function, and `accuracy` as a metric.
+
+## Training
+
+The model is trained on 40,000 reviews with a validation set of 10,000 reviews. The training process involves:
+
+- Splitting the data into training and validation sets.
+- Training the model for 20 epochs with a batch size of 512.
+
+## Evaluation
+
+After training, the model is evaluated on a test set of 10,000 reviews. The evaluation metrics include loss and accuracy.
+
+## Results
+
+The model achieves an accuracy of approximately 87.9% on the test set.
+
+## Usage
+
+To use the model for predictions, you can run the following:
+
+```python
+predictions = model.predict(x_test)
+```
+
+This will give you the probability of each review in the test set being positive.
+
+## Contributing
+
+Contributions are welcome! Please fork this repository and submit a pull request for any improvements or additions.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
